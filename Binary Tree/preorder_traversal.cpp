@@ -1,4 +1,4 @@
-// Given the root of a binary tree, return the inorder traversal of its nodes' values.
+// Given the root of a binary tree, return the preorder traversal of its nodes' values.
 
 /**
  * Definition for a binary tree node.
@@ -11,20 +11,17 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-
- vector<int> solve(TreeNode* root,vector<int>& ans){
-    if(!root){
-        return ans;
-    }
-    solve(root->left,ans);
-    ans.push_back(root->val);
-    solve(root->right,ans);
-    return ans;
- }
 class Solution {
 public:
-    vector<int> inorderTraversal(TreeNode* root) {
+    void solve(TreeNode* root, vector<int>& ans){
+        if(root == NULL) return;
+        ans.push_back(root->val);
+        solve(root->left,ans);
+        solve(root->right,ans);
+    }
+    vector<int> preorderTraversal(TreeNode* root) {
         vector<int> ans;
-        return solve(root,ans);
+        solve(root,ans);
+        return ans;
     }
 };
