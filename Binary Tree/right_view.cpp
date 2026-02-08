@@ -25,3 +25,5 @@ public:
         return ans;
     }
 };
+
+// In the brute force approach, the level order traversal can be used and the right most element of each level can be pushed in the solution.
